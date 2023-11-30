@@ -1,0 +1,37 @@
+version: '3.8'
+name: cildap
+services:
+  auth:
+#    image: ci-ldap-server:1
+    build: .
+    networks:
+      - backend
+    command: --root-cn ${LDAPROOT_CN-admin} --root-pw ${LDAPROOT_PW-secret}
+    environment:
+      - LDAPBASE=${LDAPBASE-dc=example,dc=com}
+      - LDAPLOGLEVEL=${LDAPLOGLEVEL-parse}
+      # does not work
+      #- DOCKER_SLAPADD0_PATH=/data/db-a-config.ldif
+      - DOCKER_SLAPADD1_PATH=/data/db-a-data.ldif
+    volumes:
+      - ./data:/data
+      - ./docker-openldap:/code
+#      - auth:/srv
+#      - /etc/localtime:/etc/localtime:ro        # Use host timezone
+
+  gui:
+    image: osixia/phpldapadmin
+    hostname: gui
+    ports:
+      - "127.0.0.1:8001:80"
+    networks:
+      - backend
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=auth
+      - PHPLDAPADMIN_HTTPS=false
+
+networks:
+  backend:
+
+#volumes:
+#  auth:
