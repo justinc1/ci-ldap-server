@@ -2,12 +2,18 @@ Commands:
 
 ```
 docker compose up -d
-docker compose exec auth sh
 
+docker compose exec auth sh
+# in auth continer
 ldapwhoami -H ldap://auth:389 -vvv -D cn=admin,dc=example,dc=com -w secret -x
 ldapsearch -H ldap://auth:389/ -D cn=admin,dc=example,dc=com -w secret -b dc=example,dc=com "uid=demo"
 # include operational attributes
 ldapsearch -H ldap://auth:389/ -D cn=admin,dc=example,dc=com -w secret -b dc=example,dc=com "uid=demo" +
+
+# on docker host
+ldapsearch -H ldap://localhost:10389 -D cn=admin,dc=example,dc=com -w secret -b dc=example,dc=com "uid=demo"
+ldapsearch -H ldap://localhost:11389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com'
+ldapsearch -H ldap://localhost:12389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
 ```
 
 Web UI at http://127.0.0.1:8001 :

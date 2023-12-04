@@ -1,0 +1,62 @@
+dn: dc=example,dc=com
+objectClass: organization
+
+dn: ou=users,dc=example,dc=com
+objectClass: organizationalUnit
+
+dn: ou=groups,dc=example,dc=com
+objectClass: organizationalUnit
+
+# ======================================================================
+dn: uid=user1,ou=users,dc=example,dc=com
+objectClass: user
+
+dn: uid=user2,ou=users,dc=example,dc=com
+objectClass: user
+
+dn: uid=user3,ou=users,dc=example,dc=com
+objectClass: user
+
+dn: uid=user4,ou=users,dc=example,dc=com
+objectClass: user
+
+dn: uid=user5,ou=users,dc=example,dc=com
+objectClass: user
+
+dn: uid=user6,ou=users,dc=example,dc=com
+objectClass: user
+
+
+# ======================================================================
+# unrelated to spotter
+dn: cn=normal-group,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user2,ou=users,dc=example,dc=com
+
+dn: cn=spotter-superadmins,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user4,ou=users,dc=example,dc=com
+member: uid=user6,ou=users,dc=example,dc=com
+
+dn: cn=spotter-users-org1,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user1,ou=users,dc=example,dc=com
+member: uid=user3,ou=users,dc=example,dc=com
+
+dn: cn=spotter-admins-org1,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user1,ou=users,dc=example,dc=com
+
+dn: cn=spotter-users-org2,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user1,ou=users,dc=example,dc=com
+member: uid=user4,ou=users,dc=example,dc=com
+
+dn: cn=spotter-admins-org2,ou=groups,dc=example,dc=com
+objectClass: group
+member: uid=user4,ou=users,dc=example,dc=com
+member: uid=user5,ou=users,dc=example,dc=com
+
+# Saso - group to contain all spotter-x groups?
+
+# ldapsearch -H ldap://localhost -D "CN=Administrator,CN=Users,DC=example,DC=com" -w Test1234 -x -LLL -b "DC=example,DC=com" "(cn=*Server*)" member

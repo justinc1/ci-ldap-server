@@ -1,0 +1,183 @@
+#------------------------------------------------------------------------------
+# Setup structure
+# cn=org1_user,dc=ldap,dc=server
+dn: OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: organizationalUnit
+ou: Uporabniki
+
+dn: OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: organizationalUnit
+ou: Skupine
+
+#------------------------------------------------------------------------------
+# OU=Hyper-V,OU=Strezniki part
+
+# dn: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+# objectClass: top
+# objectClass: person
+# objectClass: organizationalPerson
+# objectClass: user
+# objectClass: computer
+# cn: user1
+# distinguishedName: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+# instanceType: 4
+# whenCreated: 20191121153353.0Z
+# whenChanged: 20220126154340.0Z
+# uSNCreated: 505307
+# # memberOf: CN=xy,OU=Skupine,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+# uSNChanged: 18127645
+# name: user1
+# # objectGUID:: zG+EK0mmf0C6JQAuNp/AOg==
+# userAccountControl: 69632
+# badPwdCount: 0
+# codePage: 0
+# countryCode: 0
+# badPasswordTime: 132876854183033966
+# lastLogon: 132878402093645107
+# localPolicyFlags: 0
+# # pwdLastSet: 132876854181927568
+# # primaryGroupID: 515
+# # objectSid:: AQUAAAAAAAUVAAAAqxCpKMYOX1aCWopJb3AAAA==
+# accountExpires: 9223372036854775807
+# logonCount: 3640
+# sAMAccountName: user1$
+# # sAMAccountType: 805306369
+# #servicePrincipalName: HOST/docker2uat.thecompany.example.com
+# #servicePrincipalName: HOST/DOCKER2UAT
+# #objectCategory: CN=Computer,CN=Schema,CN=Configuration,DC=thecompany,DC=example,DC=com
+# # isCriticalSystemObject: FALSE
+# dSCorePropagationData: 16010101000000.0Z
+# lastLogonTimestamp: 132870473164790291
+# msDS-SupportedEncryptionTypes: 28
+# userPrincipalName: jsmith@example.net
+
+dn: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user1
+name: user1
+distinguishedName: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user1$
+
+dn: CN=user2,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user2
+name: user2
+distinguishedName: CN=user2,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user2$
+
+dn: CN=user3,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user3
+name: user3
+distinguishedName: CN=user3,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user3$
+
+dn: CN=user4,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user4
+name: user4
+distinguishedName: CN=user4,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user4$
+
+dn: CN=user5,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user5
+name: user5
+distinguishedName: CN=user5,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user5$
+
+dn: CN=user6,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user6
+name: user6
+distinguishedName: CN=user6,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user6$
+
+#------------------------------------------------------------------------------
+
+# dn: CN=normal-group,OU=Skupine,DC=thecompany,DC=example,DC=com
+# objectClass: top
+# objectClass: group
+# cn: normal-group
+# member: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+# member: CN=user2,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+# distinguishedName: CN=normal-group,OU=Skupine,DC=thecompany,DC=example,DC=com
+# instanceType: 4
+# # whenCreated: 20220124090643.0Z
+# # whenChanged: 20220124130159.0Z
+# # uSNCreated: 17494955
+# # uSNChanged: 17522989
+# name: normal-group
+# # objectGUID:: yXP2THyMFUi39ZySDdBVpw==
+# # objectSid:: AQUAAAAAAAUVAAAAqxCpKMYOX1aCWopJ/ZkAAA==
+# sAMAccountName: normal-group
+# # sAMAccountType: 268435456
+# groupType: -2147483646
+# ## objectCategory: CN=Group,CN=Schema,CN=Configuration,DC=xy,DC=example,DC=com
+# # dSCorePropagationData: 16010101000000.0Z
+
+dn: CN=normal-group,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: normal-group
+distinguishedName: CN=normal-group,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: normal-group
+sAMAccountName: normal-group
+member: CN=user2,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+
+dn: CN=spotter-superadmins,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: spotter-superadmins
+distinguishedName: CN=spotter-superadmins,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: spotter-superadmins
+sAMAccountName: spotter-superadmins
+member: CN=user4,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+member: CN=user6,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+
+dn: CN=spotter-users-org1,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: spotter-users-org1
+distinguishedName: CN=spotter-users-org1,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: spotter-users-org1
+sAMAccountName: spotter-users-org1
+member: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+member: CN=user3,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+
+dn: CN=spotter-admins-org1,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: spotter-admins-org1
+distinguishedName: CN=spotter-admins-org1,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: spotter-admins-org1
+sAMAccountName: spotter-admins-org1
+member: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+
+dn: CN=spotter-users-org2,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: spotter-users-org2
+distinguishedName: CN=spotter-users-org2,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: spotter-users-org2
+sAMAccountName: spotter-users-org2
+member: CN=user1,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+member: CN=user4,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+
+dn: CN=spotter-admins-org2,OU=Skupine,DC=thecompany,DC=example,DC=com
+objectClass: top
+objectClass: group
+cn: spotter-admins-org2
+distinguishedName: CN=spotter-admins-org2,OU=Skupine,DC=thecompany,DC=example,DC=com
+instanceType: 4
+name: spotter-admins-org2
+sAMAccountName: spotter-admins-org2
+member: CN=user4,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+member: CN=user5,OU=Uporabniki,DC=thecompany,DC=example,DC=com

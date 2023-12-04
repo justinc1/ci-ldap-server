@@ -1,0 +1,167 @@
+dn: dc=example,dc=com
+objectClass: organization
+objectClass: dcObject
+dc: example
+o: example.com
+structuralObjectClass: organization
+
+dn: ou=users,dc=example,dc=com
+objectClass: organizationalUnit
+ou: users
+structuralObjectClass: organizationalUnit
+
+dn: uid=demo,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+cn: demo
+sn: demo
+uid: demo
+mail: demo@example.com
+userPassword:: ZGVtbw==
+telephoneNumber: 555-439-2736
+title: First User
+structuralObjectClass: inetOrgPerson
+
+dn: ou=groups,dc=example,dc=com
+ou: groups
+objectClass: organizationalUnit
+objectClass: top
+structuralObjectClass: organizationalUnit
+
+# ===============================================================
+
+dn: cn=normal-group,ou=groups,dc=example,dc=com
+cn: normal-group
+gidNumber: 500
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+
+dn: cn=spotter-superadmins,ou=groups,dc=example,dc=com
+cn: spotter-superadmins
+gidNumber: 501
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+member: uid=uuser4,ou=users,dc=example,dc=com
+member: uid=uuser6,ou=users,dc=example,dc=com
+
+dn: cn=spotter-users-org1,ou=groups,dc=example,dc=com
+cn: spotter-users-org1
+gidNumber: 502
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+member: uid=uuser1,ou=users,dc=example,dc=com
+member: uid=uuser3,ou=users,dc=example,dc=com
+
+dn: cn=spotter-admins-org1,ou=groups,dc=example,dc=com
+cn: spotter-admins-org1
+gidNumber: 504
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+member: uid=uuser1,ou=users,dc=example,dc=com
+
+dn: cn=spotter-users-org2,ou=groups,dc=example,dc=com
+cn: spotter-users-org2
+gidNumber: 505
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+member: uid=uuser1,ou=users,dc=example,dc=com
+member: uid=uuser4,ou=users,dc=example,dc=com
+
+dn: cn=spotter-admins-org2,ou=groups,dc=example,dc=com
+cn: spotter-admins-org2
+gidNumber: 506
+objectClass: posixGroup
+objectClass: top
+structuralObjectClass: posixGroup
+member: uid=uuser4,ou=users,dc=example,dc=com
+member: uid=uuser5,ou=users,dc=example,dc=com
+
+# ===============================================================
+
+dn: cn=user0 user0,ou=users,dc=example,dc=com
+givenName: user0
+sn: user0
+cn: user0 user0
+uid: uuser0
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1000
+gidNumber: 500
+homeDirectory: /home/users/uuser1
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user1 user1,ou=users,dc=example,dc=com
+givenName: user1
+sn: user1
+cn: user1 user1
+uid: uuser1
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1001
+gidNumber: 500
+homeDirectory: /home/users/uuser1
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user2 user2,ou=users,dc=example,dc=com
+givenName: user2
+sn: user2
+cn: user2 user2
+uid: uuser2
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1002
+gidNumber: 500
+homeDirectory: /home/users/uuser2
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user3 user3,ou=users,dc=example,dc=com
+givenName: user3
+sn: user3
+cn: user3 user3
+uid: uuser3
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1003
+gidNumber: 500
+homeDirectory: /home/users/uuser3
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user4 user4,ou=users,dc=example,dc=com
+givenName: user4
+sn: user4
+cn: user4 user4
+uid: uuser4
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1003
+gidNumber: 500
+homeDirectory: /home/users/uuser4
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user5 user5,ou=users,dc=example,dc=com
+givenName: user5
+sn: user5
+cn: user5 user5
+uid: uuser5
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1003
+gidNumber: 500
+homeDirectory: /home/users/uuser5
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson

@@ -1,0 +1,10 @@
+--- /usr/lib/python3/dist-packages/samba/ntacls.py.orig	2022-02-22 21:13:23.090064491 +0000
++++ /usr/lib/python3/dist-packages/samba/ntacls.py	2022-02-22 21:14:14.837481705 +0000
+@@ -233,6 +233,7 @@
+             samba.xattr_native.wrap_setxattr(file, xattr.XATTR_NTACL_NAME,
+                                              ndr_pack(ntacl))
+     else:
++        return
+         smbd.set_nt_acl(
+             file, SECURITY_SECINFO_FLAGS, sd,
+             service=service, session_info=session_info)

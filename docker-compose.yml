@@ -1,9 +1,35 @@
 version: '3.8'
 name: cildap
+
+x-samba: &x-samba
+  build: samba
+  # privileged is needed for xattrs and systemd
+  privileged: true
+  networks:
+    - backend
+  dns_search:
+    - thecompany.example.com
+  dns:
+#      - 172.25.1.2
+    - 8.8.8.8
+  dns_opt:
+    - edns0
+  hostname: samba
+#    extra_hosts:
+#      - "samba.thecompany.example.com:172.25.1.2"
+  command: /scripts/samba/setup-samba.sh
+  volumes:
+#      - /etc/localtime:/etc/localtime:ro
+    - ./samba:/scripts/samba:ro
+    # - ./samba/files/ldap-data---1-department.ldif:/scripts/samba/files/ldap-data.ldif:ro
+    #- ./samba/files/ldap-data---2-departments.ldif:/scripts/samba/files/ldap-data.ldif:ro
+
+
 services:
+  # openldap server
   auth:
 #    image: ci-ldap-server:1
-    build: .
+    build: openldap
     networks:
       - backend
     command: --root-cn ${LDAPROOT_CN-admin} --root-pw ${LDAPROOT_PW-secret}
@@ -14,11 +40,14 @@ services:
       #- DOCKER_SLAPADD0_PATH=/data/db-a-config.ldif
       - DOCKER_SLAPADD1_PATH=/data/db-a-data.ldif
     volumes:
-      - ./data:/data
-      - ./docker-openldap:/code
+      - ./data/openldap:/data
+#      - ./docker-openldap:/code
 #      - auth:/srv
 #      - /etc/localtime:/etc/localtime:ro        # Use host timezone
+    ports:
+      - "10389:389"
 
+  # web UI for openldap server
   gui:
     image: osixia/phpldapadmin
     hostname: gui
@@ -29,6 +58,21 @@ services:
     environment:
       - PHPLDAPADMIN_LDAP_HOSTS=auth
       - PHPLDAPADMIN_HTTPS=false
+
+  # Active directory mockup, it uses samba
+  samba1:
+    <<: *x-samba
+    environment:
+      LDAP_DATA_LDIF: /scripts/samba/files/ldap-data---1-department.ldif
+    ports:
+      - "11389:389"
+
+  samba2:
+    <<: *x-samba
+    environment:
+      LDAP_DATA_LDIF: /scripts/samba/files/ldap-data---2-departments.ldif
+    ports:
+      - "12389:389"
 
 networks:
   backend:
