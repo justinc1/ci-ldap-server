@@ -36,8 +36,10 @@ services:
     environment:
       - LDAPBASE=${LDAPBASE-dc=example,dc=com}
       - LDAPLOGLEVEL=${LDAPLOGLEVEL-parse}
+      - LDAPURI=ldapi:/// ldap:/// ldaps:///
       # does not work
-      #- DOCKER_SLAPADD0_PATH=/data/db-a-config.ldif
+      - DOCKER_SLAPADD0_PATH=/data/db-a-config.ldif
+      #- DOCKER_SLAPADD0_PATH=/etc/openldap/slapd.ldif
       - DOCKER_SLAPADD1_PATH=/data/db-a-data.ldif
     volumes:
       - ./data/openldap:/data
@@ -46,6 +48,7 @@ services:
 #      - /etc/localtime:/etc/localtime:ro        # Use host timezone
     ports:
       - "10389:389"
+      - "10636:636"
 
   # web UI for openldap server
   gui:
@@ -66,6 +69,7 @@ services:
       LDAP_DATA_LDIF: /scripts/samba/files/ldap-data---1-department.ldif
     ports:
       - "11389:389"
+      - "11636:636"
 
   samba2:
     <<: *x-samba
@@ -73,6 +77,7 @@ services:
       LDAP_DATA_LDIF: /scripts/samba/files/ldap-data---2-departments.ldif
     ports:
       - "12389:389"
+      - "12636:636"
 
 networks:
   backend:
