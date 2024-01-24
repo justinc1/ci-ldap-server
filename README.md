@@ -28,6 +28,11 @@ ldapsearch -ZZ -H ldap://$SRVIP:10389 -D cn=admin,dc=example,dc=com -w secret -b
 ldapsearch -ZZ -H ldap://$SRVIP:11389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com'
 ldapsearch -ZZ -H ldap://$SRVIP:12389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
 
+# Cert CA chain
+# ignore CA chain
+curl -k ldaps://$SRVIP:10636
+# check cert
+curl --cacert data/openldap/tls/ca.pem --resolve ADSAMBA.thecompany.example.com:10636:127.0.0.1 ldaps://ADSAMBA.thecompany.example.com:10636
 ```
 
 Web UI at http://127.0.0.1:8001 :

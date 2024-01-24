@@ -5,7 +5,9 @@ import ldap
 
 
 def main():
-    ldap_url = "ldaps://localhost:10636"
+    # DNS name must match certificate
+    # add to /etc/hosts "127.0.0.2 ADSAMBA.thecompany.example.com"
+    ldap_url = "ldaps://ADSAMBA.thecompany.example.com:10636"
     bind_dn = "cn=admin,dc=example,dc=com"
     bind_pw = "secret"
     search_base = "dc=example,dc=com"
@@ -22,7 +24,7 @@ def main():
     l.protocol_version=ldap.VERSION3
 
     # Force cert validation
-    #l.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_DEMAND)  #
+    l.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_DEMAND)
     # Set path name of file containing all trusted CA certificates
     l.set_option(ldap.OPT_X_TLS_CACERTFILE, CACERTFILE)
     # Force libldap to create a new SSL context (must be last TLS option!)
