@@ -78,12 +78,21 @@ ou: Skupine
 # msDS-SupportedEncryptionTypes: 28
 # userPrincipalName: jsmith@example.net
 
+dn: CN=user0,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+objectClass: user
+cn: user0
+name: user0
+distinguishedName: CN=user0,OU=Uporabniki,DC=thecompany,DC=example,DC=com
+sAMAccountName: user0$
+mail: user0@example.com
+
 dn: CN=user1,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 objectClass: user
 cn: user1
 name: user1
 distinguishedName: CN=user1,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 sAMAccountName: user1$
+mail: user1@example.com
 
 dn: CN=user2,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 objectClass: user
@@ -91,6 +100,7 @@ cn: user2
 name: user2
 distinguishedName: CN=user2,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 sAMAccountName: user2$
+mail: user2@example.com
 
 dn: CN=user3,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 objectClass: user
@@ -98,6 +108,7 @@ cn: user3
 name: user3
 distinguishedName: CN=user3,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 sAMAccountName: user3$
+mail: user3@example.com
 
 dn: CN=user4,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 objectClass: user
@@ -105,6 +116,8 @@ cn: user4
 name: user4
 distinguishedName: CN=user4,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 sAMAccountName: user4$
+mail: user4@example.com
+mail: user4-secodary@example.com
 
 dn: CN=user5,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 objectClass: user
@@ -112,6 +125,7 @@ cn: user5
 name: user5
 distinguishedName: CN=user5,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com
 sAMAccountName: user5$
+mail: user5@example.com
 
 dn: CN=user6,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 objectClass: user
@@ -119,6 +133,7 @@ cn: user6
 name: user6
 distinguishedName: CN=user6,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 sAMAccountName: user6$
+mail: user6@example.com
 
 #------------------------------------------------------------------------------
 

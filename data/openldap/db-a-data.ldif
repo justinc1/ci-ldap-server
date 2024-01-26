@@ -90,6 +90,7 @@ uid: uuser0
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
 uidNumber: 1000
 gidNumber: 500
+mail: user0@example.com
 homeDirectory: /home/users/uuser1
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -104,6 +105,7 @@ uid: uuser1
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
 uidNumber: 1001
 gidNumber: 500
+mail: user1@example.com
 homeDirectory: /home/users/uuser1
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -118,6 +120,7 @@ uid: uuser2
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
 uidNumber: 1002
 gidNumber: 500
+mail: user2@example.com
 homeDirectory: /home/users/uuser2
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -132,6 +135,7 @@ uid: uuser3
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
 uidNumber: 1003
 gidNumber: 500
+mail: user3@example.com
 homeDirectory: /home/users/uuser3
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -144,8 +148,10 @@ sn: user4
 cn: user4 user4
 uid: uuser4
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
-uidNumber: 1003
+uidNumber: 1004
 gidNumber: 500
+mail: user4@example.com
+mail: user4-secodary@example.com
 homeDirectory: /home/users/uuser4
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -158,9 +164,25 @@ sn: user5
 cn: user5 user5
 uid: uuser5
 userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
-uidNumber: 1003
+uidNumber: 1005
 gidNumber: 500
+mail: user5@example.com
 homeDirectory: /home/users/uuser5
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+structuralObjectClass: inetOrgPerson
+
+dn: cn=user6 user6,ou=users,dc=example,dc=com
+givenName: user6
+sn: user6
+cn: user6 user6
+uid: uuser6
+userPassword:: e01ENX1rUzdJQTdMT1NlU2xRUWFOU1ZxMWNBPT0=
+uidNumber: 1006
+gidNumber: 500
+mail: user6@example.com
+homeDirectory: /home/users/uuser6
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: top
