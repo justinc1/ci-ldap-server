@@ -24,16 +24,22 @@ cp -f /var/lib/samba/private/krb5.conf /etc/krb5.conf
     for ii in $(seq 1 30)
     do
         sleep 1
-        echo "Trying to import LDAP data ii=$ii"
+        echo "Trying to test with ldapsearch ii=$ii"
         set +e
-        ldapadd -H ldap://localhost -D "CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com" -w Test1234 -x -f "$LDAP_DATA_LDIF"
+        ldapsearch -H ldap://localhost -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
         rc=$?
         set -e
-        echo "Trying to import LDAP data ii=$ii rc=$rc"
+        echo "Trying to test with ldapsearch ii=$ii rc=$rc"
         if [[ $rc == 0 ]]
         then
             break
         fi
     done
+    sleep 5
+    echo "================================"
+    ldapadd -H ldap://localhost -D "CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com" -w Test1234 -x -f "$LDAP_DATA_LDIF"
+    echo "================================"
+    ldapsearch -H ldap://localhost -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
+    echo "================================"
 )&
 exec samba -i
