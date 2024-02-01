@@ -122,6 +122,7 @@ name: user4
 distinguishedName: CN=user4,OU=Uporabniki,OU=departmentb,DC=thecompany,DC=example,DC=com
 sAMAccountName: user4$
 mail: user4@example.com
+# secodary email forbidden in samba/ad
 # mail: user4-secodary@example.com
 
 dn: CN=user5,OU=Uporabniki,OU=departmenta,DC=thecompany,DC=example,DC=com

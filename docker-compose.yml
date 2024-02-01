@@ -55,7 +55,7 @@ services:
     image: osixia/phpldapadmin
     hostname: gui
     ports:
-      - "127.0.0.1:8001:80"
+      - "8001:80"
     networks:
       - backend
     environment:
