@@ -33,6 +33,23 @@ ldapsearch -ZZ -H ldap://$SRVIP:12389 -D 'CN=Administrator,CN=Users,DC=thecompan
 curl -k ldaps://$SRVIP:10636
 # check cert
 curl --cacert data/openldap/tls/ca.pem --resolve ADSAMBA.thecompany.example.com:10636:127.0.0.1 ldaps://ADSAMBA.thecompany.example.com:10636
+
+# OpenLDAP pagination
+# Seems page limit is not applied to rootDN 'cn=admin,dc=example,dc=com' user
+# So use demo user
+# Paging is just ignored, all results are returned.
+ldapsearch -H ldap://$SRVIP:10389 -D uid=demo,ou=users,dc=example,dc=com -w demo -b dc=example,dc=com
+# pages with size=5 are returned
+ldapsearch -H ldap://$SRVIP:10389 -D uid=demo,ou=users,dc=example,dc=com -w demo -b dc=example,dc=com -E pr=5
+# page too large
+ldapsearch -H ldap://$SRVIP:10389 -D uid=demo,ou=users,dc=example,dc=com -w demo -b dc=example,dc=com -E pr=6
+```
+
+Add extra users with
+
+```
+export SRVIP=localhost
+./add-users.sh 200
 ```
 
 Web UI at http://127.0.0.1:8001 :
