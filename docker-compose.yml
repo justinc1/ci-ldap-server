@@ -1,7 +1,14 @@
 version: '3.8'
 name: cildap
 
+x-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 x-samba: &x-samba
+  logging: *logging
   build: samba
   # privileged is needed for xattrs and systemd
   privileged: true
@@ -28,6 +35,7 @@ x-samba: &x-samba
 services:
   # openldap server
   auth:
+    logging: *logging
 #    image: ci-ldap-server:1
     build: openldap
     networks:
@@ -52,6 +60,7 @@ services:
 
   # web UI for openldap server
   gui:
+    logging: *logging
     image: osixia/phpldapadmin
     hostname: gui
     ports:
