@@ -16,9 +16,16 @@ ldapsearch -H ldap://$SRVIP:10389 -D cn=admin,dc=example,dc=com -w secret -b dc=
 ldapsearch -H ldap://$SRVIP:11389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com'
 ldapsearch -H ldap://$SRVIP:12389 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
 
-# TLS
+# TLS and startTLS
+# Server uses self-signed (and maybe expired) certificate.
+# Client needs to tolerate invalid certificate.
+# Do 1.
+export LDAPTLS_REQCERT=never
+# Or do 2.
 sudo mkdir /etc/ldap
 sudo sh -c "echo 'TLS_REQCERT never' >> /etc/ldap/ldap.conf"
+
+# TLS
 ldapsearch -H ldaps://$SRVIP:10636 -D cn=admin,dc=example,dc=com -w secret -b dc=example,dc=com "uid=demo"
 ldapsearch -H ldaps://$SRVIP:11636 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com'
 ldapsearch -H ldaps://$SRVIP:12636 -D 'CN=Administrator,CN=Users,DC=thecompany,DC=example,DC=com' -w Test1234 -b 'dc=thecompany,dc=example,dc=com' '(&(objectClass=group)(name=spotter-*))' member
